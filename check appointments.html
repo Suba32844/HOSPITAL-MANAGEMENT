@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <style>
+ body {
+ font-family: Arial, sans-serif;
+ margin: 0;
+ padding: 0;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ height: 100vh;
+ background-image: url("doctorappointments.jpg");background-size: cover;background-repeat:
+no-repeat;object-fit:contain;
+ font-family: Arial, sans-serif;
+}
+.appointment-booking {
+ background-color: #fff;
+ padding: 20px;
+ border-radius: 8px;
+ box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+label {
+ display: block;
+ margin-bottom: 8px;
+}
+input {
+ width: 100%;
+ padding: 8px;
+ margin-bottom: 16px;
+ box-sizing: border-box;
+}
+button {
+ background-color: #007bff;
+ color: #fff;
+ padding: 10px 20px;
+ border: none;
+ border-radius: 4px;
+ cursor: pointer;
+}
+button:hover {
+ background-color: #0056b3;
+}
+a{
+ text-decoration: none;
+}
+ </style>
+ <title>Hospital Management System - Appointment Booking</title>
+</head>
+<body>
+ <div class="appointment-booking">
+ <h2>Appointment Booking</h2>
+ <form id="appointmentBookingForm">
+ <label for="patientName">Patient Name:</label>
+ <input type="text" id="patientName" name="patientName" required>
+ <label for="contactNumber">Contact Number:</label>
+ <input type="tel" id="contactNumber" name="contactNumber" required>
+ <label for="appointmentDate">Select Appointment Date:</label>
+ <input type="date" id="appointmentDate" name="appointmentDate" required>
+ <label for="appointmentTime">Select Appointment Time:</label>
+ <input type="time" id="appointmentTime" name="appointmentTime" required>
+ <button type="button" onclick="bookAppointment()">Book Appointment</button>
+ <br><br>
+ <a href="project.html"><b>Back</b></a>
+ </form>
+ </div>
+
+ <script >
+ // Mock data for available appointment slots
+const availableAppointments = [
+ { date: "2023-12-01", time: "09:00" },
+ { date: "2023-12-01", time: "10:00" },
+ { date: "2023-12-02", time: "14:00" },
+ { date: "2023-12-02", time: "15:00" },
+ // Add more available appointments as needed
+];
+function bookAppointment() {
+ // Get form data
+ const patientName = document.getElementById('patientName').value;
+ const contactNumber = document.getElementById('contactNumber').value;
+ const appointmentDate = document.getElementById('appointmentDate').value;
+ const appointmentTime = document.getElementById('appointmentTime').value;
+ // Check if the selected appointment is available
+ const isAvailable = availableAppointments.some(appointment =>
+ appointment.date === appointmentDate && appointment.time === appointmentTime
+ );
+ // Display the result
+ if (isAvailable) {
+ alert(`Appointment booked for ${patientName} on ${appointmentDate} at
+${appointmentTime}.`);
+ // Here you would typically handle the appointment booking on the server side.
+ } else {
+ alert(`Sorry, the selected appointment is not available. Please choose another date or
+time.`);
+ }
+}
+ </script>
+</body>
+</html>

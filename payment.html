@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make Payment - Hospital Management System</title>
+    <style>
+        body {
+ font-family: Arial, sans-serif;
+ margin: 0;
+ padding: 0;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ height: 100vh;
+ background-image: url("payment.jpg.");background-size: cover;background-repeat:
+no-repeat;object-fit:contain;
+ font-family: Arial, sans-serif;
+}
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .payment-form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        .payment-form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: bold;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .submit-button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .submit-button:hover {
+            background-color: #218838;
+        }
+        #result {
+            margin-top: 15px;
+            text-align: center;
+            color: #28a745;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        function handlePayment(event) {
+            event.preventDefault(); // Prevent the form from submitting
+            
+            // Get the amount from the input field
+            const amount = document.getElementById('treatmentCharges').value;
+            
+            // Print success message and amount in console
+            console.log("Payment successful");
+            console.log("Amount: $" + amount);
+
+            // Display success message on the webpage
+            document.getElementById("result").innerText = `Payment successful. Amount: $${amount}`;
+        }
+    </script>
+</head>
+<body>
+
+<div class="payment-form">
+    <h2>Make Payment</h2>
+    <form onsubmit="handlePayment(event)">
+        <div class="form-group">
+            <label for="patientId">Patient ID</label>
+            <input type="text" id="patientId" name="patientId" required>
+        </div>
+        <div class="form-group">
+            <label for="patientName">Patient Name</label>
+            <input type="text" id="patientName" name="patientName" required>
+        </div>
+        <div class="form-group">
+            <label for="treatmentCharges">Treatment Charges ($)</label>
+            <input type="number" id="treatmentCharges" name="treatmentCharges" required>
+        </div>
+        <div class="form-group">
+            <label for="paymentMethod">Payment Method</label>
+            <select id="paymentMethod" name="paymentMethod" required>
+                <option value="creditCard">Credit Card</option>
+                <option value="debitCard">Debit Card</option>
+                <option value="netBanking">Net Banking</option>
+                <option value="upi">UPI</option>
+                <option value="cash">Cash</option>
+            </select>
+        </div>
+        <button type="submit" class="submit-button">Pay Now</button>
+        <p id="result"></p>
+    </form>
+</div>
+
+</body>
+</html>

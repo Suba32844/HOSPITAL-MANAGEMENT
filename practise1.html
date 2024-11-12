@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <style>
+ a{
+ text-decoration: none;
+ }
+ body{
+ background-image: url("reg.jpg");background-size: cover;background-repeat:
+no-repeat;object-fit:contain;
+ font-family: Arial, sans-serif;
+ }
+ </style>
+<script>
+ function formValidation()
+{
+var name=document.getElementById("name");
+var zip = document.getElementById("zip");
+var ucountry = document.getElementById("country");
+var phnum = document.getElementById("phnum");
+var uemail = document.getElementById("mail");
+var ugender = document.getElementsByName("gender");
+var passid = document.getElementById("pass");
+var vpassid = document.getElementById("vpass");
+var pref= document.getElementsByName("pref");
+var name1=document.getElementById("name1");
+var zip1= document.getElementById("zip1");
+var ucountry1 = document.getElementById("country1");
+var phnum1 = document.getElementById("phnum1");
+var mail2 = document.getElementById("mail2");
+var ugender1 = document.getElementsByName("gen");
+var pref1 = document.getElementById("pref1");
+var pass1 = document.getElementById("pass1");
+var vpass1 = document.getElementById("vpass1");
+if(allfieldsvalid(name,zip,ucountry,phnum,uemail,passid,vpassid))
+{
+if(allnumeric(zip))
+{
+if(validphnum(phnum))
+{
+if(countryselect(ucountry))
+{
+if(validatepwd(passid,vpassid))
+{
+if(ValidateEmail(uemail))
+{
+if(validgender(ugender))
+{
+return true;
+} }}}}}}
+return false;
+}
+function allfieldsvalid(name,zip,phnum,uemail,passid,vpassid)
+{
+if((name.value.length==0) && (zip.value.length==0) && (phnum.value.length==0) && (uemail.
+value.length==0) && (passid.value.length==0) &&(vpassid.value.length==0))
+{
+name1.innerHTML="Enter name";
+name1.style.color="red";
+zip1.innerHTML="Enter zip";
+zip1.style.color="red";
+phnum1.innerHTML="Enter phone number";
+phnum1.style.color="red";
+mail2.innerHTML="Enter email";
+mail2.style.color="red";
+pass1.innerHTML="Enter password";
+pass1.style.color="red";
+vpass1.innerHTML="Enter verify password";
+vpass1.style.color="red";
+return false;
+}
+return true;
+}
+function countryselect(ucountry)
+{
+if(ucountry.value == "Default")
+{
+alert('Select your country from the list');
+ucountry.focus();
+return false;
+}
+else
+{
+return true;
+}
+}
+function allnumeric(uzip)
+{
+var numbers = /^[0-9]+$/;
+if(uzip.value.match(numbers))
+{
+return true;
+}
+else
+{
+alert('ZIP code must have numeric characters only');
+uzip.focus();
+return false;
+}
+}
+function validphnum(phnum)
+{
+var patt1=/\d{10}/;
+var contactnumval=phnum.value;
+if(contactnumval.match(patt1))
+{ return true;
+}else{
+alert("Phone number should be 10digits");
+return false;}
+}
+function validatepwd(pwd,repwd){
+var patt1=/$[A-Za-z0-9]{6,8}^/;
+var pwdval=pwd.value;
+var repwdval=repwd.value;
+if(!pwdval.match(patt1) && pwdval!=repwdval)
+{
+alert("Password and repassword does not match/6 to 8 characters");
+return false;
+}
+else{
+return true;
+}
+}
+function ValidateEmail(uemail)
+{
+var mailformat = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+if(uemail.value.match(mailformat))
+{
+return true;
+}
+else
+{
+alert("You have entered an invalid email address!");
+uemail.focus();
+return false;
+}
+}
+function validgender(ugender)
+{
+var isChecked = false;
+for (var i = 0; i < ugender.length; i++) {
+if (ugender[i].checked) {
+isChecked = true; // found one element checked
+break;
+}
+}
+if(isChecked==false)
+{
+alert("Select male/female");
+}
+return isChecked;
+}
+</script>
+</head>
+<body>
+ <div align="center" id="one">
+ <h1>Registration</h1>
+<form id="form1" method="post" onsubmit="return formValidation();">
+Name*<input type="text" name="" id="name"><span id="name1"></span><br><br>
+Address<input type="text" name="" id="addr"><span id="addr1"></span><br><br>
+Zipcode*</span><input type="text" name="zip" id="zip"><span id="zip1"></span><br><br>
+Country*
+<select name="" id="country">
+<option value="">--Select Country</option>
+<option value="">India</option>
+<option value="">Russia</option>
+<option value="">Africa</option>
+<option value="">Srilanka</option>
+</select><span id="country1"></span><br><br>
+Gender*
+<input type="radio" name="gender" id="gender">Male&nbsp;<input type="radio" name="gender"
+id=
+"">Female<span id="gen"></span><br><br>
+Phone*<input type="text" name="phno" id="phnum"><span id="phnum1"></span><br><br>
+Email*<input type="email" name="mail" id="mail"><span id="mail2"></span><br><br>
+Password(6-8characters)*<input type="password" name="pass" id="pass"><span id="pass1"
+></span><br><br>
+Verify password*<input type="password" name="v-pass" id="vpass"><span id="vpass1"
+></span><br><br>
+<input type="submit" name="submit" value="Check valid" /><br>
+<br>
+<a href="login.html"><b>Sign in</b></a>
+</form>
+</div>
+</body>
+</html>

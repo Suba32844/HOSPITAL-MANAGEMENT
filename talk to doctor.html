@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <title>Talk to Doctor</title>
+ <link rel="stylesheet" href="styles4.css">
+</head>
+<body>
+ <header>
+ <h1 id="one">Talk to Doctor</h1>
+ </header>
+ <main>
+ <section id="doctorForm">
+ <h2>Request a Consultation</h2>
+ <form id="consultationForm">
+ <label for="patientName">Your Name:</label><br>
+ <input type="text" id="patientName" required><br><br>
+
+ <label for="doctor">Select Doctor:</label><br><br>
+ <select id="doctor" required><br><br>
+ <option value="Dr. Smith">Dr. Smith</option>
+ <option value="Dr. Johnson">Dr. Johnson</option><br><br>
+
+ </select><br>
+ <label for="appointmentDate">Preferred Date:</label><br><br>
+ <input type="date" id="appointmentDate" required><br><br>
+ <label for="message">Additional Information:</label>
+ <textarea id="message" rows="4"></textarea><br><br>
+ <button type="submit">Request Consultation</button><br><br>
+ <a href="project.html">Back</a>
+ </form>
+ </section>
+ <section id="consultationStatus"><br><br>
+ <h2>Consultation Status</h2><br><br>
+ <div id="statusMessage"><br>
+ 
+ </div>
+ </section>
+ </main>
+ <img src="doctorappointment.jpg">
+ <script type="text/javascript">
+
+document.getElementById('consultationForm').addEventListener('submit', function(event) {
+ event.preventDefault();
+ const patientName = document.getElementById('patientName').value;
+ const selectedDoctor = document.getElementById('doctor').value;
+ const appointmentDate = document.getElementById('appointmentDate').value;
+ const message = document.getElementById('message').value;
+
+ simulateConsultationRequest(patientName, selectedDoctor, appointmentDate, message);
+});
+function simulateConsultationRequest(patientName, selectedDoctor, appointmentDate, message) {
+ console.log(`Consultation Requested by ${patientName} for ${selectedDoctor} on${appointmentDate}. Additional info: ${message}`);
+ 
+ const statusMessage = document.getElementById('statusMessage');
+ statusMessage.innerHTML = `Your consultation request for ${selectedDoctor} on${appointmentDate} has been submitted. Please wait for confirmation.`;
+}
+ </script>
+</body>
+</html>

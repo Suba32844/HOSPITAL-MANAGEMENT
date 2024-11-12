@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <style>
+ body {
+ font-family: Arial, sans-serif;
+ margin: 0;
+ padding: 0;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ height: 100vh;
+ background-image: url("insurance.jpg");background-size: cover;background-repeat:
+no-repeat;object-fit:contain;
+ font-family: Arial, sans-serif;
+
+}
+.insurance-application {
+ background-color: #fff;
+ padding: 20px;
+ border-radius: 8px;
+ box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+label {
+ display: block;
+ margin-bottom: 8px;
+}
+input,
+textarea {
+ width: 100%;
+ padding: 8px;
+ margin-bottom: 16px;
+ box-sizing: border-box;
+}
+button {
+ background-color: #007bff;
+ color: #fff;
+ padding: 10px 20px;
+ border: none;
+ border-radius: 4px;
+ cursor: pointer;
+}
+button:hover {
+ background-color: #0056b3;
+}
+a{
+ text-decoration: none;
+}
+ </style>
+ <title>Hospital Management System - Health Insurance Application</title>
+</head>
+<body>
+ <div class="insurance-application">
+ <h2>Health Insurance Application Form</h2>
+ <form id="healthInsuranceForm">
+ <label for="firstName">First Name:</label>
+ <input type="text" id="firstName" name="firstName" required>
+ <label for="lastName">Last Name:</label>
+ <input type="text" id="lastName" name="lastName" required>
+ <label for="dob">Date of Birth:</label>
+ <input type="date" id="dob" name="dob" required>
+ <label for="insuranceProvider">Insurance Provider:</label>
+ <input type="text" id="insuranceProvider" name="insuranceProvider" required>
+ <label for="policyNumber">Policy Number:</label>
+ <input type="text" id="policyNumber" name="policyNumber" required>
+ <label for="healthCondition">Current Health Condition:</label>
+ <textarea id="healthCondition" name="healthCondition" rows="4"
+required></textarea>
+ <button type="button" onclick="submitHealthInsuranceForm()">Submit
+Application</button>
+ <br><br>
+ <a href="project.html"><b>Back</b></a>
+ </form>
+ </div>
+ <script >
+ function submitHealthInsuranceForm() {
+ // Get form data
+ const firstName = document.getElementById('firstName').value;
+ const lastName = document.getElementById('lastName').value;
+ const dob = document.getElementById('dob').value;
+ const insuranceProvider = document.getElementById('insuranceProvider').value;
+ const policyNumber = document.getElementById('policyNumber').value;
+ const healthCondition = document.getElementById('healthCondition').value;
+ // Validate form data (you can add more validation as needed)
+ // Here you would typically handle the form submission,
+ // send the data to the server, and process the health insurance application.
+ // For this example, we'll just show an alert.
+ alert('Health insurance application submitted. This is where you would handle processing on the
+server.');
+}
+ </script>
+</body>
+</html>
